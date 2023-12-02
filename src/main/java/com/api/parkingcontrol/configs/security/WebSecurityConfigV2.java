@@ -12,14 +12,14 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfigV2 {
 
     @Bean
-    public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .httpBasic()
                 .and()
                 .authorizeHttpRequests()
-//                        .antMatchers(HttpMethod.GET, "/parking-spot/**").permitAll()
-//                        .antMatchers(HttpMethod.POST, "/parking-spot/").hasAnyRole("USER","ADMIN")
-//                        .antMatchers(HttpMethod.GET, "/parking-spot/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/parking-spot/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/parking-spot/").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/parking-spot/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
@@ -27,7 +27,7 @@ public class WebSecurityConfigV2 {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
