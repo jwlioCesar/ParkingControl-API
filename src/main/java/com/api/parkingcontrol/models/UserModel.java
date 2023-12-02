@@ -21,7 +21,6 @@ public class UserModel implements UserDetails, Serializable {
     private String username;
     @Column(nullable = false)
     private String password;
-
     @ManyToMany
     @JoinTable(name = "tb_user_roles",
         joinColumns = @JoinColumn(name = "user_id"),
